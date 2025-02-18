@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://roddy-dev.github.io/FrontEndMentor-Results-Summary-Component/)
+- Live Site URL: [Live Demo here](https://roddy-dev.github.io/FrontEndMentor-Results-Summary-Component/)
 
 ## My process
 
