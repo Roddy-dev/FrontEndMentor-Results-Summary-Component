@@ -1,0 +1,306 @@
+:root {
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-200: hsl(221, 100%, 96%);
+  --clr-neutral-400: hwb(241 78% 0%);
+  --clr-neutral-800: hsl(224, 25%, 50%);
+  --clr-neutral-900: hsl(224, 30%, 27%);
+
+  /* primary 300 colours need tweeked on monitor to get right */
+  /* primary reds */
+  --clr-primary-red-hue: 0;
+  --clr-primary-red-900: hsl(var(--clr-primary-red-hue), 100%, 67%);
+  --clr-primary-red-300: hsl(var(--clr-primary-red-hue), 50%, 90%);
+
+  /* primary yellows */
+  --clr-primary-yellow-hue: 39;
+  --clr-primary-yellow-900: hsl(var(--clr-primary-yellow-hue), 100%, 56%);
+  --clr-primary-yellow-300: hsl(var(--clr-primary-yellow-hue), 50%, 90%);
+
+  /* primary teal */
+  --clr-primary-teal-hue: 166;
+  --clr-primary-teal-900: hsl(var(--clr-primary-teal-hue), 100%, 37%);
+  --clr-primary-teal-300: hsl(var(--clr-primary-teal-hue), 50%, 90%);
+
+  /* primary blue */
+  --clr-primary-blue-hue: 234;
+  --clr-primary-blue-900: hsl(var(--clr-primary-blue-hue), 85%, 45%);
+  --clr-primary-blue-300: hsl(var(--clr-primary-blue-hue), 50%, 90%);
+
+  /* Gradients */
+
+  --clr-grad-slate-blue: hsl(252, 100%, 67%);
+  --clr-grad-royal-blue: hsl(241, 81%, 54%);
+
+  --clr-grad-bg: linear-gradient(
+    to bottom,
+    var(--clr-grad-slate-blue),
+    var(--clr-grad-royal-blue)
+  );
+
+  --clr-grad-violet: hsla(256, 72%, 46%, 1);
+  --clr-grad-persian-bl: hsla(241, 72%, 46%, 0);
+
+  --clr-grad-circle: linear-gradient(
+    to bottom,
+    var(--clr-grad-violet),
+    var(--clr-grad-persian-bl)
+  );
+
+  --box-shadow: 11px 14px 45px var(--clr-neutral-400);
+
+  --spacer: 2rem;
+
+  --radius-sm: 5px;
+  --radius-large: 30px;
+}
+
+/* hanken-grotesk-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/static/hanken-grotesk-v8-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* hanken-grotesk-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/static/hanken-grotesk-v8-latin-700.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  font-family: inherit;
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* utilities */
+
+.flow-content > * + * {
+  margin-top: var(--flow-space, var(--spacer));
+}
+
+/* .flow-content--large {
+	--flow-space: 3rem;
+} */
+
+.container {
+  display: flex;
+  align-items: center;
+
+  max-width: 42rem;
+  margin: 0 auto;
+  border-radius: var(--radius-large);
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+}
+
+.split > * + * {
+  flex-basis: 100%;
+
+  margin: calc(var(--spacer) * 1.5) 0 var(--spacer) 0;
+}
+
+@media (min-width: 38em) {
+  .split {
+    flex-direction: row;
+  }
+
+  .split > * + * {
+    --spacer: 1.25rem;
+    margin: -1.5rem 0 0 0;
+    /* bit of hacky neg margin to pull up h3 looks neater */
+  }
+  .container {
+    margin-top: 7rem;
+  }
+
+  .shadow {
+    box-shadow: var(--box-shadow);
+  }
+
+  .result {
+    border-top-left-radius: var(--radius-large);
+    border-top-right-radius: var(--radius-large);
+  }
+}
+
+/* typography */
+
+body {
+  font-family: "Hanken Grotesk";
+}
+
+.result-score {
+  font-size: 4rem;
+}
+
+.out-of {
+  color: var(--clr-neutral-800);
+}
+
+.result h3:first-of-type,
+.result-circle:last-child,
+.result p {
+  color: var(--clr-neutral-400);
+}
+
+.result h3,
+.summary h3 {
+  font-size: 1.5rem;
+}
+
+.result > h3:last-of-type {
+  font-size: 2rem;
+}
+
+/* general styles */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  min-width: 100%;
+  background: var(--clr-grad-bg);
+  color: var(--clr-neutral-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacer);
+  border-bottom-left-radius: var(--radius-large);
+  border-bottom-right-radius: var(--radius-large);
+}
+
+.result:last-child {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.result-circle {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  height: 170px;
+  justify-content: center;
+  align-items: center;
+  background: var(--clr-grad-circle);
+  border-radius: 50%;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+}
+.card:nth-of-type(1) {
+  color: var(--clr-primary-red-900);
+  background-color: var(--clr-primary-red-300);
+}
+
+.card:nth-of-type(2) {
+  color: var(--clr-primary-yellow-900);
+  background-color: var(--clr-primary-yellow-300);
+}
+
+.card:nth-of-type(3) {
+  color: var(--clr-primary-teal-900);
+  background-color: var(--clr-primary-teal-300);
+}
+
+.card:nth-of-type(4) {
+  color: var(--clr-primary-blue-900);
+  background-color: var(--clr-primary-blue-300);
+}
+
+.card > p {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.card > img {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.card > p {
+  color: var(--clr-neutral-900);
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+@media (min-width: 38em) {
+  .summary {
+    min-width: unset;
+  }
+  .result {
+    min-width: unset;
+  }
+}
+
+.summary > * {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  color: var(--clr-neutral-100);
+  background: var(--clr-neutral-900);
+}
+
+.btn:hover {
+  background: var(--clr-grad-bg);
+}
+
+footer {
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
